@@ -1,8 +1,11 @@
 # docker-hands-on
 
 ## nginxを使ってみよう
-ここでは、NginxというWebサーバのDockerイメージを取得し、
-ローカルで起動してみます。
+ここでは、NginxというWebサーバのDockerイメージを取得し、ローカルでWebサービスを起動してみます。
+
+ここではサービスの起動と基本的な操作だけを学習し、HTMLなどで書いたコンテンツの表示に関してはLesson2以降で確認します。
+
+**注意点:** コマンドを打てるターミナルウィンドウを２つ開いて置いてください。１つはDockerの起動と停止を行うため、もう一つはDockerで起動したコンテナに入ったり、状態を確認するために使います。
 
 ### 1. nginxのイメージを取得
 実行するコマンド
@@ -49,11 +52,7 @@ $ docker run -it nginx
 2023/01/21 09:33:45 [notice] 1#1: start worker process 32
 ```
 
-### 3. ブラウザで動作確認
-[http://localhost/](http://localhost/) にアクセスしてみる。
-
-
-### 4. [コンテナの一覧表示](https://docs.docker.jp/engine/reference/commandline/ps.html)
+### 3. [コンテナの一覧表示](https://docs.docker.jp/engine/reference/commandline/ps.html)
 
 実行するコマンド
 ```
@@ -66,17 +65,16 @@ $ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
 b909af02bdeb   nginx     "/docker-entrypoint.…"   7 minutes ago   Up 7 minutes   80/tcp    epic_khayyam
 ```
-### 5. [実行中のコンテナに入る](https://docs.docker.jp/engine/reference/commandline/exec.html#docker-exec)
+### 4. [実行中のコンテナに入る](https://docs.docker.jp/engine/reference/commandline/exec.html#docker-exec)
 次のコマンドを実行
 ```bash
-CONTAINER_ID=docker psで表示したCONTAINER ID, ex: b909af02bdeb
-docker exec -it ${CONTAINER_ID} /bin/bash
+docker exec -it 確認したコンテナIDを指定 /bin/bash
 ```
 コンテナ環境から抜ける
 ```bash
 exit
 ```
-### 6. nginxの停止
+### 5. nginxの停止
 nginxを動作させているコンソールで`Ctrl + c`
 
 
