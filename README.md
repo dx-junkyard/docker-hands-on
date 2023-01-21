@@ -5,12 +5,29 @@
 ローカルで起動してみます。
 
 ### 1. nginxのイメージを取得
-次のコマンドを実行
+実行するコマンド
 ```sh
 docker pull nginx
 ```
+
 実行結果
-```aidl
+```sh
+$ docker pull nginx
+Using default tag: latest
+latest: Pulling from library/nginx
+Digest: sha256:b8f2383a95879e1ae064940d9a200f67a6c79e710ed82ac42263397367e7cc4e
+Status: Image is up to date for nginx:latest
+docker.io/library/nginx:latest
+```
+
+### 2. nginxの起動
+実行するコマンド
+```sh
+docker run -it nginx
+```
+
+実行結果
+```sh
 $ docker run -it nginx
 /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
 /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
@@ -32,23 +49,19 @@ $ docker run -it nginx
 2023/01/21 09:33:45 [notice] 1#1: start worker process 32
 ```
 
-### 2. nginxの起動
-```
-docker run -it nginx
-```
-
 ### 3. ブラウザで動作確認
 [http://localhost/](http://localhost/) にアクセスしてみる。
 
 
 ### 4. [コンテナの一覧表示](https://docs.docker.jp/engine/reference/commandline/ps.html)
 
-次のコマンドを実行
+実行するコマンド
 ```
 docker ps
 ```
+
 実行結果
-```aidl
+```sh
 $ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
 b909af02bdeb   nginx     "/docker-entrypoint.…"   7 minutes ago   Up 7 minutes   80/tcp    epic_khayyam
