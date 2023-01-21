@@ -7,10 +7,11 @@
 
 詳細な説明は[こちら](https://docs.docker.jp/engine/introduction/understanding-docker.html)を参照してください。
 
-## Dockerの使い方
-1. イメージ取得
-2. 起動
-3. 停止
+## メニュー
+* イメージ取得
+* 起動
+* コンテナ環境にログイン
+* 停止
 
 ## Webサーバを動かしてみる
 ### 1. nginxのイメージを取得
