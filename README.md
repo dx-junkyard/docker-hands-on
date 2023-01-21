@@ -12,6 +12,8 @@
 ## メニュー
 * Lesson1: nginxのイメージを使ったdockerの基本的な操作
 * Lesson2: 起動時によく使うオプション
+* Lesson3: Webサーバで表示しているHTMLを変更してみる（１）
+* Lesson4: Webサーバで表示しているHTMLを変更してみる（２）
 
 ## Webサーバを動かしてみる
 ### 1. nginxのイメージを取得
