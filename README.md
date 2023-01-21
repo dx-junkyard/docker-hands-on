@@ -5,8 +5,8 @@
 Lesson1でnginxのイメージ取得が済んでいる前提です。
 
 
-### 自動イメージ削除
-停止後にイメージを自動で削除する場合は`--rm`を付ける
+### コンテナ削除指定
+停止後にコンテナを自動で削除する場合は`--rm`を付ける
 ```
 docker run -it --rm nginx
 ```
@@ -25,25 +25,10 @@ docker run -it --rm -p 8081:80 nginx
 
 ### ローカルディレクトリをマウントする
 ```
+mkdir ./docker_work
+echo "hello!" > ./docker_work/index.html
 docker run -it --rm -p 8081:80 -v "$PWD/docker_work:/usr/share/nginx/html/" nginx
 ```
 
 ### ブラウザで表示してみる
 ブラウザで [http://localhost:8081](http://localhost:8081) にアクセス。
-
-### 起動したサーバに入る
-```
-CONTAINER_ID=`docker ps | grep -v "CONTAINER" | cut -f1 -d" "`
-docker exec -it ${CONTAINER_ID} /bin/bash
-```
-nginxの設定を確認
-```sh
-cat /etc/nginx/conf.d/default.conf
-```
-表示されているメッセージを変更する
-```sh
-cat /usr/share/nginx/html/index.html
-sed -ie 's/Welcom/Good by/' /usr/share/nginx/html/index.html
-cat /usr/share/nginx/html/index.html
-```
-
