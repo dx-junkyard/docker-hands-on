@@ -65,6 +65,15 @@ $ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
 b909af02bdeb   nginx     "/docker-entrypoint.…"   7 minutes ago   Up 7 minutes   80/tcp    epic_khayyam
 ```
+
+停止中のコンテナを含めて表示する場合は `-a` を使います
+```sh
+$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                     PORTS     NAMES
+c49b7c6cd253   nginx     "/docker-entrypoint.…"   15 seconds ago   Exited (0) 5 seconds ago             relaxed_euclid
+```
+
+
 ### 4. [実行中のコンテナに入る](https://docs.docker.jp/engine/reference/commandline/exec.html#docker-exec)
 次のコマンドを実行
 ```bash
@@ -74,7 +83,23 @@ docker exec -it 確認したコンテナIDを指定 /bin/bash
 ```bash
 exit
 ```
+
+
 ### 5. nginxの停止
 nginxを動作させているコンソールで`Ctrl + c`
 
 
+### 6. 起動したコンテナの削除
+停止したコンテナはメモリから開放されたものの、再開が可能なようにストレージを占領し続けています。
+`docker rm コンテナID` を用いて使用しなくなったコンテナを削除します
+
+```sh
+# 停止したコンテナIDを確認
+$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                     PORTS     NAMES
+a24ce5fcf049   nginx     "/docker-entrypoint.…"   12 seconds ago   Exited (0) 9 seconds ago             nostalgic_chatelet
+
+# コンテナを削除
+$ docker rm a24ce5fcf049
+a24ce5fcf049
+```
